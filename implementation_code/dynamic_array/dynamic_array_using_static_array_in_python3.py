@@ -13,14 +13,14 @@ example:
 (c_int*16)() creates an int array of size 16.
 """
 
-
+from typing import Any
 import ctypes
 
 
 class DynamicArray:
     """Implement dynamic array in python3, similar to python List."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize a dynamic aray with default size 1.
         """
@@ -29,7 +29,7 @@ class DynamicArray:
         self._array = self._make_array(self._capacity)
 
     @staticmethod
-    def _make_array(new_capacity: int):
+    def _make_array(new_capacity: int) -> Any:
         """
         Return a new array with new capacity.
         Args:
@@ -41,7 +41,7 @@ class DynamicArray:
         """
         return (new_capacity * ctypes.py_object)()
 
-    def __len__(self):
+    def __len__(self) -> int:
         """
 
         Returns: number of elements stored in the array.
@@ -49,7 +49,7 @@ class DynamicArray:
         """
         return self._n
 
-    def __getitem__(self, index: int) -> ctypes.py_object:
+    def __getitem__(self, index: int) -> Any:
         """
         Return element at the index.
         Args:
@@ -77,7 +77,7 @@ class DynamicArray:
         self._array = new_array
         self._capacity = new_capacity
 
-    def insert_at(self, element: ctypes.py_object, index: int) -> None:
+    def insert_at(self, element: ctypes.py_object[Any], index: int) -> None:
         """
         Insert the item at the specified index.
         Args:
@@ -98,7 +98,7 @@ class DynamicArray:
             return
         raise IndexError(f"Index {index} is not between 0 and {self._n}.")
 
-    def append(self, element: ctypes.py_object) -> None:
+    def append(self, element: ctypes.py_object[Any]) -> None:
         """
         Add an element at the end of the array.
         Args:
@@ -135,7 +135,7 @@ class DynamicArray:
         """
         self.remove_at(index=self._n - 1)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Allow print string."""
         string_list = ["[", str(self._array[0])]
         for ind in range(1, self._n):
