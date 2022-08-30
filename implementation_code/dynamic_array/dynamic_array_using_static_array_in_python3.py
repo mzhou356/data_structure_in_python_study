@@ -77,7 +77,7 @@ class DynamicArray:
         self._array = new_array
         self._capacity = new_capacity
 
-    def insert_at(self, element: ctypes.py_object[Any], index: int) -> None:
+    def insert_at(self, element: Any, index: int) -> None:
         """
         Insert the item at the specified index.
         Args:
@@ -98,7 +98,7 @@ class DynamicArray:
             return
         raise IndexError(f"Index {index} is not between 0 and {self._n}.")
 
-    def append(self, element: ctypes.py_object[Any]) -> None:
+    def append(self, element: Any) -> None:
         """
         Add an element at the end of the array.
         Args:
